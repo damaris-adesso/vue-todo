@@ -1,6 +1,7 @@
 <script lang="ts">
+import { defineComponent } from "vue";
 import ToDoItem from "./components/ToDoItem.vue";
-export default {
+export default defineComponent({
   components: {
     ToDoItem,
   },
@@ -22,7 +23,7 @@ export default {
       this.list = newList;
     },
   },
-};
+});
 </script>
 
 <template>
