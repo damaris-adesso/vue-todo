@@ -1,7 +1,12 @@
-<script>
-export default {
-  props: ["todo", "index", "removeItem"],
-};
+<script setup lang="ts">
+export interface ToDo {
+  todo: string;
+}
+const props = defineProps<{
+  todo: ToDo;
+  index: number;
+  removeItem: any;
+}>();
 </script>
 <template>
   <div class="ToDoItem">

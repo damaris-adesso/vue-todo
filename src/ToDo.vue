@@ -1,29 +1,23 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import ToDoItem from "./components/ToDoItem.vue";
-export default defineComponent({
-  components: {
-    ToDoItem,
-  },
-  data() {
-    return {
-      list: [{ todo: "clean the house" }, { todo: "buy milk" }],
-      todo: "",
-    };
-  },
-  methods: {
-    updateList() {
-      if (!this.todo) {
-        return;
-      }
-      this.list = [...this.list, { todo: this.todo }];
-    },
-    deleteFromList(index: number) {
-      const newList = this.list.filter((item, key) => key !== index);
-      this.list = newList;
-    },
-  },
-});
+
+
+
+const list = ref([{ todo: "clean the house" }, { todo: "buy milk" }]);
+const todo = ref("");
+
+function updateList() {
+  if (!todo.value) {
+    return;
+  }
+  list.value = [...list.value, { todo: todo.value }];
+}
+
+function deleteFromList(index: number) {
+  const newList = list.value.filter((item, key) => key !== index);
+  list.value = newList;
+}
 </script>
 
 <template>
