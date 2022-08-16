@@ -17,7 +17,7 @@ function generateId() {
 }
 
 function updateList() {
-  if (!todo.value) {
+  if (!todo.value || todo.value === "") {
     return;
   }
   const newId = generateId();
