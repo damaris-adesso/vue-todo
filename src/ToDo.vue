@@ -2,14 +2,26 @@
 import { ref } from "vue";
 import ToDoItem from "./components/ToDoItem.vue";
 
-const list = ref([{ todo: "clean the house" }, { todo: "buy milk" }]);
+const list = ref([
+  { todo: "clean the house", id: 1 },
+  { todo: "buy milk", id: 2 },
+]);
 const todo = ref("");
+
+function generateId() {
+  if (list.value && list.value.length) {
+    return Math.max(...list.value.map((t) => t.id)) + 1;
+  } else {
+    return 1;
+  }
+}
 
 function updateList() {
   if (!todo.value) {
     return;
   }
-  list.value = [...list.value, { todo: todo.value }];
+  const newId = generateId();
+  list.value = [...list.value, { todo: todo.value, id: newId }];
   // alternative
   // list.value.push({todo: todo.value})
   todo.value = "";
