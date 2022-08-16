@@ -1,17 +1,17 @@
 <script setup lang="ts">
 export interface ToDo {
   todo: string;
+  id: number;
 }
 const props = defineProps<{
   todo: ToDo;
-  index: number;
   removeItem: any;
 }>();
 </script>
 <template>
   <div class="ToDoItem">
     <p class="ToDoItem-Text">{{ todo.todo }}</p>
-    <button class="ToDoItem-Delete" @click="removeItem(index)">-</button>
+    <button class="ToDoItem-Delete" @click="removeItem(todo.id)">-</button>
   </div>
 </template>
 

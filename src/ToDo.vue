@@ -27,9 +27,8 @@ function updateList() {
   todo.value = "";
 }
 
-function deleteFromList(index: number) {
-  const newList = list.value.filter((item, key) => key !== index);
-  list.value = newList;
+function deleteFromList(id: number) {
+  list.value = list.value.filter((item) => item.id !== id);
 }
 </script>
 
@@ -43,10 +42,9 @@ function deleteFromList(index: number) {
 
       <ul>
         <ToDoItem
-          v-for="(todo, index) of list"
-          :key="index"
+          v-for="(todo) of list"
+          :key="todo.id"
           :todo="todo"
-          :index="index"
           :removeItem="deleteFromList"
         />
       </ul>
