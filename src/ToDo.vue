@@ -2,8 +2,6 @@
 import { ref } from "vue";
 import ToDoItem from "./components/ToDoItem.vue";
 
-
-
 const list = ref([{ todo: "clean the house" }, { todo: "buy milk" }]);
 const todo = ref("");
 
@@ -12,6 +10,9 @@ function updateList() {
     return;
   }
   list.value = [...list.value, { todo: todo.value }];
+  // alternative
+  // list.value.push({todo: todo.value})
+  todo.value = "";
 }
 
 function deleteFromList(index: number) {
