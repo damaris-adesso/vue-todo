@@ -42,13 +42,18 @@ function deleteFromList(id: number) {
 
       <ul>
         <ToDoItem
-          v-for="(todo) of list"
+          v-for="todo of list"
           :key="todo.id"
           :todo="todo"
           :removeItem="deleteFromList"
         />
       </ul>
-      <input type="text" v-model="todo" />
+      <input
+        type="text"
+        v-model="todo"
+        v-on:keyup.enter="updateList"
+        placeholder="I need to ..."
+      />
       <button class="ToDo-Add" @click="updateList">+</button>
     </div>
   </div>
